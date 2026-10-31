@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Per-model quota router">
+  <circle cx="32" cy="32" r="28" fill="none" stroke="#2f6fed" stroke-width="4" opacity="0.28"/>
+  <path d="M14 40a18 18 0 0 1 36 0" fill="none" stroke="#2f6fed" stroke-width="5" stroke-linecap="round"/>
+  <path d="M32 40 42 22" fill="none" stroke="#2f6fed" stroke-width="5" stroke-linecap="round"/>
+  <circle cx="32" cy="40" r="4.5" fill="#2f6fed"/>
+  <path d="M20 50h12m0 0-4-4m4 4-4 4" fill="none" stroke="#16a34a" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M44 50H32m0 0 4-4m-4 4 4 4" fill="none" stroke="#f59e0b" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

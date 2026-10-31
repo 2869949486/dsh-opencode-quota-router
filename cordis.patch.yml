@@ -1,0 +1,83 @@
+# OpenCode Go routes plus the per-model quota router.
+#
+# `opencode-go` keeps the installed pi-ai catalog protocol per model, but lists
+# only the models the live endpoint serves today.
+#
+# `opencode-free` carries the free models: they are not in the shipped catalog,
+# so they need a hand-declared protocol, and a static `x-opencode-session`
+# header stands in for the per-session header the catalog provider adds.
+- id: llm-pi-ai
+  name: '@deepseek-ai/dsh-llm-pi-ai'
+  config:
+    providers:
+      opencode-go:
+        apiKeyEnv: OPENCODE_API_KEY
+        models:
+          - id: deepseek-v4.1-flash
+          - id: deepseek-v4-pro
+          - id: glm-5.2
+          - id: glm-5.3
+          - id: glm-5.3-flash
+          - id: grok-4.7
+          - id: gpt-5.6-luna
+          - id: gpt-6-luna
+          - id: claude-haiku-5-5
+          - id: hy3
+          - id: hy4-preview
+          - id: kimi-k2.7-code
+          - id: kimi-k3
+          - id: longcat-2.0
+          - id: mimo-v2.6-flash
+          - id: mimo-v2.6-pro
+          - id: minimax-m3
+          - id: muse-spark-1.2-contributor
+          - id: muse-spark-1.3-contributor
+          - id: qwen3.7-plus
+          - id: qwen3.8-flash
+          - id: qwen3.8-max
+      opencode-free:
+        displayName: OpenCode Go (Free)
+        api: openai-completions
+        baseURL: https://opencode.ai/inference/go/openai/v1
+        apiKeyEnv: OPENCODE_API_KEY
+        headers:
+          x-opencode-session: dsh-opencode-free
+        models:
+          - id: beam-free
+            name: Beam Free
+            contextWindow: 1048576
+            maxTokens: 131072
+            input: [text]
+            reasoningEfforts:
+              low: low
+              medium: medium
+              high: high
+              xhigh: xhigh
+              max: max
+          - id: iceman-contributor-free
+            name: Iceman Contributor Free
+            contextWindow: 262144
+            maxTokens: 131072
+            input: [text]
+            reasoningEfforts: false
+
+- insert:
+    - id: opencode-quota-router
+      name: '@local/dsh-opencode-quota-router'
+      config:
+        usageUrl: https://opencode.ai/inference/go/v1/usage
+        apiKeyRef: OPENCODE_API_KEY
+        probeIntervalMs: 1800000
+        routes:
+          - primary:
+              provider: opencode-go
+              model: deepseek-v4.1-flash
+            fallback:
+              provider: deepseek-account
+              model: deepseek-flash
+          - primary:
+              provider: opencode-go
+              model: deepseek-v4-pro
+            fallback:
+              provider: deepseek-account
+              model: deepseek-v4-pro

@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "OpenCode 按模型额度路由",
+    "description": "每个 DeepSeek 模型优先走 OpenCode Go 套餐；只有该模型的额度用尽时才切换它自己到 DeepSeek 账户，其它模型继续用套餐。"
+  }
+}

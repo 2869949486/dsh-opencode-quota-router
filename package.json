@@ -1,0 +1,14 @@
+{
+  "name": "@local/dsh-opencode-quota-router",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Prefers the OpenCode Go plan per model and falls back to the DeepSeek account only for the model whose allowance ran out.",
+  "exports": {
+    ".": "./index.js",
+    "./locale/*.json": "./locale/*.json",
+    "./icon": "./icon.svg"
+  },
+  "files": ["index.js", "cordis.patch.yml", "README.md", "test.mjs", "locale/*.json", "icon.svg"],
+  "dsh": { "bundle": { "patch": "./cordis.patch.yml" } }
+}

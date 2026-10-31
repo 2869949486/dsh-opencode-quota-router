@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "OpenCode Per-Model Quota Router",
+    "description": "Routes each DeepSeek model to the OpenCode Go plan and falls back to the DeepSeek account only for the model whose allowance ran out."
+  }
+}
