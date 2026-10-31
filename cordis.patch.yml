@@ -63,7 +63,7 @@
 
 - insert:
     - id: opencode-quota-router
-      name: '@local/dsh-opencode-quota-router'
+      name: 'dsh-opencode-quota-router'
       config:
         usageUrl: https://opencode.ai/inference/go/v1/usage
         apiKeyRef: OPENCODE_API_KEY

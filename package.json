@@ -1,14 +1,44 @@
 {
-  "name": "@local/dsh-opencode-quota-router",
+  "name": "dsh-opencode-quota-router",
   "version": "1.0.0",
-  "private": true,
   "type": "module",
-  "description": "Prefers the OpenCode Go plan per model and falls back to the DeepSeek account only for the model whose allowance ran out.",
+  "description": "dsh plugin: per-model OpenCode Go quota routing with DeepSeek account fallback.",
   "exports": {
     ".": "./index.js",
     "./locale/*.json": "./locale/*.json",
     "./icon": "./icon.svg"
   },
-  "files": ["index.js", "cordis.patch.yml", "README.md", "test.mjs", "locale/*.json", "icon.svg"],
-  "dsh": { "bundle": { "patch": "./cordis.patch.yml" } }
+  "files": [
+    "index.js",
+    "cordis.patch.yml",
+    "README.md",
+    "test.mjs",
+    "locale/*.json",
+    "icon.svg"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  },
+  "license": "MIT",
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "deepseek-harness",
+    "opencode",
+    "quota",
+    "model-routing"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/2869949486/dsh-opencode-quota-router.git"
+  },
+  "homepage": "https://github.com/2869949486/dsh-opencode-quota-router#readme",
+  "bugs": {
+    "url": "https://github.com/2869949486/dsh-opencode-quota-router/issues"
+  },
+  "engines": {
+    "dsh": "^0.2.0-rc.1"
+  }
 }
